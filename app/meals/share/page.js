@@ -1,9 +1,17 @@
+'use client'
+
+
 import ImagePicker from "@/components/meals/image-picker";
 import classes from "./page.module.css";
 import { shareMeal } from "@/lib/actions";
+import MealsFormSubmit from "@/components/meals/meals-form-submit";
+import { useActionState } from 'react';
+
+
 
 export default function ShareMealPage() {
 
+	const [state, formAction]= useActionState(shareMeal, {message : null});
 
 
 	// async function shareMeal(formData) {
@@ -19,11 +27,9 @@ export default function ShareMealPage() {
 	// 	};
 	// 	console.log(meal)
 	// }
-	
-	//Moved to now file to use client side rendering 
+
+	//Moved to now file to use client side rendering
 	//if server side code ends up on client side the security problems may arise
-
-
 
 	return (
 		<>
@@ -35,7 +41,7 @@ export default function ShareMealPage() {
 				<p>Or any other meal you feel needs sharing!</p>
 			</header>
 			<main className={classes.main}>
-				<form className={classes.form} action={shareMeal}>
+				<form className={classes.form} action={formAction}>
 					<div className={classes.row}>
 						<p>
 							<label htmlFor='name'>Your name</label>
@@ -63,9 +69,10 @@ export default function ShareMealPage() {
 							required
 						></textarea>
 					</p>
-					<ImagePicker label="Your Image" name="image" />
+					<ImagePicker label='Your Image' name='image' />
+					{state.message && <p>{state.message}</p>}
 					<p className={classes.actions}>
-						<button type='submit'>Share Meal</button>
+						<MealsFormSubmit />
 					</p>
 				</form>
 			</main>
