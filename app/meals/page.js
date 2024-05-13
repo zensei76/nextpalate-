@@ -5,6 +5,12 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { getMeals } from "@/lib/meals";
 
+
+export const metadata = {
+	title: "All Meals ",
+	description: "Browse delicious palates shared by out NextPalate community.",
+};
+
 async function Meals() {
 	const meals = await getMeals();
 
