@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { getMeal } from '@/lib/meals';
 import classes from './page.module.css';
 
-
 export async function generateMetadata({ params }) {
   const meal = getMeal(params.mealSlug);
 
@@ -18,26 +17,20 @@ export async function generateMetadata({ params }) {
   };
 }
 
-
 export default function MealDetailsPage({ params }) {
   const meal = getMeal(params.mealSlug);
 
-  if(!meal){
-    notFound()
+  if (!meal) {
+    notFound();
   }
 
-
-  meal.instructions = meal.instructions.replace(/\n/g, '<br />'); //for linebreaks
+  meal.instructions = meal.instructions.replace(/\n/g, '<br />');
 
   return (
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image
-            src={meal.image}
-            alt={meal.title}
-            fill
-          />
+          <Image src={meal.image} alt={meal.title} fill />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>

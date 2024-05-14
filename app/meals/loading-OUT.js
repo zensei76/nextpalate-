@@ -1,5 +1,5 @@
-import classes from './loading.module.css'
+import classes from './loading.module.css';
 
-export default function LoadingPage(){
-    return <P className={classes.loading}>Fecting meals...</P>
+export default function MealsLoadingPage() {
+  return <p className={classes.loading}>Fetching meals...</p>;
 }
