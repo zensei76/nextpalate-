@@ -5,11 +5,13 @@ import classes from './meal-item.module.css';
 import DisplayFoodImage from './displayMealImage';
 
 export default function MealItem({ title, slug, image, summary, creator }) {
+  
   return (
     <article className={classes.meal}>
       <header>
         <div className={classes.image}>
           {/* <Image src={image} alt={title} fill /> */}
+          
           <DisplayFoodImage image={image} title={title} />
         </div>
         <div className={classes.headerText}>

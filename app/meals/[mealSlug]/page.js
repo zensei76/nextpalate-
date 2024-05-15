@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { getMeal } from '@/lib/meals';
 import classes from './page.module.css';
+import DisplayFoodImage from '@/components/meals/displayMealImage';
 
 export async function generateMetadata({ params }) {
   const meal = getMeal(params.mealSlug);
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }) {
 
 export default function MealDetailsPage({ params }) {
   const meal = getMeal(params.mealSlug);
+  console.log(meal)
 
   if (!meal) {
     notFound();
@@ -30,7 +32,8 @@ export default function MealDetailsPage({ params }) {
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image src={meal.image} alt={meal.title} fill />
+          {/* <Image src={meal.image} alt={meal.title} fill /> */}
+          <DisplayFoodImage image={meal.image} title={meal.title} />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>

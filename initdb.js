@@ -1,14 +1,29 @@
-const sql = require('better-sqlite3');
-const db = sql('meals.db');
+const sql = require("better-sqlite3");
+const db = sql("meals.db");
 
 const dummyMeals = [
-  {
-    title: 'Juicy Cheese Burger',
-    slug: 'juicy-cheese-burger',
-    image: 'nextpalate/burger_j4nj6x',
-    summary:
-      'A mouth-watering burger with a juicy beef patty and melted cheese, served in a soft bun.',
-    instructions: `
+	{
+		title: "Samosa",
+		slug: "samosa",
+		image: "nextpalate/samosa_pfa6qc",
+		summary:
+			"Samosas, popular triangular pastries, boast a crunchy exterior and a variety of fillings, ranging from savory potatoes and lentils to sweet mango and raisins. Originating from Central Asia, they're a staple in Indian and Middle Eastern cuisines, often enjoyed during Ramadan. Served hot with tangy chutneys or yogurt, they're a beloved street food across India, perfect with a cup of masala chai tea.",
+		instructions: `1. Prepare the Filling:  Boil potatoes, then mash them and mix with cooked peas, chopped onions, green chilies, and spices like turmeric, garam masala, and chili powder. Let it cool.
+      2. Make the Dough:   Knead all-purpose flour, salt, and oil into a stiff dough. Rest it for 30 minutes.
+      3. Shape the Samosas: Divide the dough into small balls, roll each into a thin oval, and cut it in half to make semi-circles.
+      4. Fold each semi-circle into a cone, fill it with the potato mixture, and seal the edges to form triangular samosas.
+      5. Fry or Bake:   Deep fry the samosas in hot oil until golden brown and crispy, or bake them in a preheated oven at 375°F (190°C) for 25-30 minutes until crisp",
+      `,
+		creator: "Halwai",
+		creator_email: "halwai@mail.com",
+	},
+	{
+		title: "Juicy Cheese Burger",
+		slug: "juicy-cheese-burger",
+		image: "nextpalate/burger_j4nj6x",
+		summary:
+			"A mouth-watering burger with a juicy beef patty and melted cheese, served in a soft bun.",
+		instructions: `
       1. Prepare the patty:
          Mix 200g of ground beef with salt and pepper. Form into a patty.
 
@@ -21,16 +36,16 @@ const dummyMeals = [
       4. Serve:
          Complete the assembly with the top bun and serve hot.
     `,
-    creator: 'John Doe',
-    creator_email: 'johndoe@example.com',
-  },
-  {
-    title: 'Spicy Curry',
-    slug: 'spicy-curry',
-    image: 'nextpalate/curry_hxtvq7',
-    summary:
-      'A rich and spicy curry, infused with exotic spices and creamy coconut milk.',
-    instructions: `
+		creator: "John Doe",
+		creator_email: "johndoe@example.com",
+	},
+	{
+		title: "Spicy Curry",
+		slug: "spicy-curry",
+		image: "nextpalate/curry_hxtvq7",
+		summary:
+			"A rich and spicy curry, infused with exotic spices and creamy coconut milk.",
+		instructions: `
       1. Chop vegetables:
          Cut your choice of vegetables into bite-sized pieces.
 
@@ -46,16 +61,16 @@ const dummyMeals = [
       5. Serve:
          Enjoy this creamy curry with rice or bread.
     `,
-    creator: 'Max Schwarz',
-    creator_email: 'max@example.com',
-  },
-  {
-    title: 'Homemade Dumplings',
-    slug: 'homemade-dumplings',
-    image: 'nextpalate/dumplings_vvvyrp',
-    summary:
-      'Tender dumplings filled with savory meat and vegetables, steamed to perfection.',
-    instructions: `
+		creator: "Max Schwarz",
+		creator_email: "max@example.com",
+	},
+	{
+		title: "Homemade Dumplings",
+		slug: "homemade-dumplings",
+		image: "nextpalate/dumplings_vvvyrp",
+		summary:
+			"Tender dumplings filled with savory meat and vegetables, steamed to perfection.",
+		instructions: `
       1. Prepare the filling:
          Mix minced meat, shredded vegetables, and spices.
 
@@ -68,16 +83,16 @@ const dummyMeals = [
       4. Serve:
          Enjoy these dumplings hot, with a dipping sauce of your choice.
     `,
-    creator: 'Emily Chen',
-    creator_email: 'emilychen@example.com',
-  },
-  {
-    title: 'Classic Mac n Cheese',
-    slug: 'classic-mac-n-cheese',
-    image: 'nextpalate/macncheese_zswjdx',
-    summary:
-      "Creamy and cheesy macaroni, a comforting classic that's always a crowd-pleaser.",
-    instructions: `
+		creator: "Emily Chen",
+		creator_email: "emilychen@example.com",
+	},
+	{
+		title: "Classic Mac n Cheese",
+		slug: "classic-mac-n-cheese",
+		image: "nextpalate/macncheese_zswjdx",
+		summary:
+			"Creamy and cheesy macaroni, a comforting classic that's always a crowd-pleaser.",
+		instructions: `
       1. Cook the macaroni:
          Boil macaroni according to package instructions until al dente.
 
@@ -93,16 +108,16 @@ const dummyMeals = [
       5. Serve:
          Serve hot, garnished with parsley if desired.
     `,
-    creator: 'Laura Smith',
-    creator_email: 'laurasmith@example.com',
-  },
-  {
-    title: 'Authentic Pizza',
-    slug: 'authentic-pizza',
-    image: 'nextpalate/pizza_wbt9vb',
-    summary:
-      'Hand-tossed pizza with a tangy tomato sauce, fresh toppings, and melted cheese.',
-    instructions: `
+		creator: "Laura Smith",
+		creator_email: "laurasmith@example.com",
+	},
+	{
+		title: "Authentic Pizza",
+		slug: "authentic-pizza",
+		image: "nextpalate/pizza_wbt9vb",
+		summary:
+			"Hand-tossed pizza with a tangy tomato sauce, fresh toppings, and melted cheese.",
+		instructions: `
       1. Prepare the dough:
          Knead pizza dough and let it rise until doubled in size.
 
@@ -115,16 +130,16 @@ const dummyMeals = [
       4. Serve:
          Slice hot and enjoy with a sprinkle of basil leaves.
     `,
-    creator: 'Mario Rossi',
-    creator_email: 'mariorossi@example.com',
-  },
-  {
-    title: 'Wiener Schnitzel',
-    slug: 'wiener-schnitzel',
-    image: 'nextpalate/schnitzel_dmgyo0',
-    summary:
-      'Crispy, golden-brown breaded veal cutlet, a classic Austrian dish.',
-    instructions: `
+		creator: "Mario Rossi",
+		creator_email: "mariorossi@example.com",
+	},
+	{
+		title: "Wiener Schnitzel",
+		slug: "wiener-schnitzel",
+		image: "nextpalate/schnitzel_dmgyo0",
+		summary:
+			"Crispy, golden-brown breaded veal cutlet, a classic Austrian dish.",
+		instructions: `
       1. Prepare the veal:
          Pound veal cutlets to an even thickness.
 
@@ -137,16 +152,16 @@ const dummyMeals = [
       4. Serve:
       Serve hot with a slice of lemon and a side of potato salad or greens.
  `,
-    creator: 'Franz Huber',
-    creator_email: 'franzhuber@example.com',
-  },
-  {
-    title: 'Fresh Tomato Salad',
-    slug: 'fresh-tomato-salad',
-    image: 'nextpalate/tomato-salad_qo4r8o',
-    summary:
-      'A light and refreshing salad with ripe tomatoes, fresh basil, and a tangy vinaigrette.',
-    instructions: `
+		creator: "Franz Huber",
+		creator_email: "franzhuber@example.com",
+	},
+	{
+		title: "Fresh Tomato Salad",
+		slug: "fresh-tomato-salad",
+		image: "nextpalate/tomato-salad_qo4r8o",
+		summary:
+			"A light and refreshing salad with ripe tomatoes, fresh basil, and a tangy vinaigrette.",
+		instructions: `
       1. Prepare the tomatoes:
         Slice fresh tomatoes and arrange them on a plate.
     
@@ -159,12 +174,13 @@ const dummyMeals = [
       4. Serve:
          Enjoy this simple, flavorful salad as a side dish or light meal.
     `,
-    creator: 'Sophia Green',
-    creator_email: 'sophiagreen@example.com',
-  },
+		creator: "Sophia Green",
+		creator_email: "sophiagreen@example.com",
+	},
 ];
 
-db.prepare(`
+db.prepare(
+	`
    CREATE TABLE IF NOT EXISTS meals (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        slug TEXT NOT NULL UNIQUE,
@@ -175,10 +191,11 @@ db.prepare(`
        creator TEXT NOT NULL,
        creator_email TEXT NOT NULL
     )
-`).run();
+`
+).run();
 
 async function initData() {
-  const stmt = db.prepare(`
+	const stmt = db.prepare(`
       INSERT INTO meals VALUES (
          null,
          @slug,
@@ -191,9 +208,9 @@ async function initData() {
       )
    `);
 
-  for (const meal of dummyMeals) {
-    stmt.run(meal);
-  }
+	for (const meal of dummyMeals) {
+		stmt.run(meal);
+	}
 }
 
 initData();
